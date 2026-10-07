@@ -245,3 +245,12 @@ class FunctionCallError(EvaluationError):
 
 class ArithmeticError(EvaluationError):
     """项目内部接口说明。"""
+
+class ArchiveError(EngineError):
+    """项目内部接口说明。"""
+
+class ArchiveExportError(ArchiveError):
+    """项目内部接口说明。"""
+
+class ArchiveImportError(ArchiveError):
+    """项目内部接口说明。"""

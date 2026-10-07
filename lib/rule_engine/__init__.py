@@ -32,6 +32,7 @@
 
 __version__ = '5.0.3'
 
+from . import archive
 from .engine import resolve_attribute
 from .engine import resolve_item
 from .engine import type_resolver_from_dataclass
@@ -57,6 +58,7 @@ __all__ = (
     'Rule',
     'RuleSyntaxError',
     'SymbolResolutionError',
+    'archive',
     'resolve_attribute',
     'resolve_item',
     'type_resolver_from_dataclass',

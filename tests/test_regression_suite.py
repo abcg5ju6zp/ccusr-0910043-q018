@@ -6,6 +6,7 @@ from importlib import import_module
 engine = import_module("tests.engine")
 parser = import_module("tests.parser")
 thread_safety = import_module("tests.thread_safety")
+archive = import_module("tests.archive")
 
 
 EngineTests = engine.EngineTests
@@ -18,3 +19,11 @@ ParserTests = parser.ParserTests
 ParserLeftOperatorRightTests = parser.ParserLeftOperatorRightTests
 ParserLiteralTests = parser.ParserLiteralTests
 ThreadSafetyTests = thread_safety.ThreadSafetyTests
+ArchiveRoundTripTests = archive.ArchiveRoundTripTests
+ArchiveTamperTests = archive.ArchiveTamperTests
+ArchiveKeyLifecycleTests = archive.ArchiveKeyLifecycleTests
+ArchiveIdempotencyTests = archive.ArchiveIdempotencyTests
+ArchiveMigrationTests = archive.ArchiveMigrationTests
+ArchiveExtensionTests = archive.ArchiveExtensionTests
+ArchiveCapabilityTests = archive.ArchiveCapabilityTests
+ArchiveExportBoundaryTests = archive.ArchiveExportBoundaryTests
