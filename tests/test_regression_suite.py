@@ -3,11 +3,21 @@
 from importlib import import_module
 
 
+archive = import_module("tests.archive")
 engine = import_module("tests.engine")
 parser = import_module("tests.parser")
 thread_safety = import_module("tests.thread_safety")
 
 
+ArchiveCapabilityTests = archive.ArchiveCapabilityTests
+ArchiveDuplicateTests = archive.ArchiveDuplicateTests
+ArchiveExportSafetyTests = archive.ArchiveExportSafetyTests
+ArchiveExtensionTests = archive.ArchiveExtensionTests
+ArchiveIntegrityTests = archive.ArchiveIntegrityTests
+ArchiveKeyRotationTests = archive.ArchiveKeyRotationTests
+ArchiveLegacyMigrationTests = archive.ArchiveLegacyMigrationTests
+ArchiveRoundtripTests = archive.ArchiveRoundtripTests
+ArchiveSemanticTests = archive.ArchiveSemanticTests
 EngineTests = engine.EngineTests
 EngineRuleTests = engine.EngineRuleTests
 EngineDatetimeRuleTests = engine.EngineDatetimeRuleTests

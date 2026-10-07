@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-#  rule_engine/__init__.py
+#  rule_engine/archive/__init__.py
 #
 #  Redistribution and use in source and binary forms, with or without
 #  modification, are permitted provided that the following conditions are
@@ -30,39 +30,45 @@
 #  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-__version__ = '5.0.3'
+"""可移植、签名的规则档案（测试环境 → 隔离生产环境）。
 
-from .engine import resolve_attribute
-from .engine import resolve_item
-from .engine import type_resolver_from_dataclass
-from .engine import type_resolver_from_dict
-from .engine import type_resolver_from_sqlalchemy
-from .engine import Context
-from .engine import Rule
+档案是一份自描述 JSON 信封：规范清单（表达式、解析上下文选项、符号清单、
+类型注册表、兼容引擎版本）外加一个或多个本地信任密钥的 Ed25519 签名。
+导入时按固定流水线做完整性验证与能力边界检查，输出
+:class:`~rule_engine.archive.ImportDecision`（接受 / 隔离 / 迁移），
+任何异常输入都不能悄悄改变规则含义。
+"""
 
-from .errors import AttributeResolutionError
-from .errors import EngineError
-from .errors import EvaluationError
-from .errors import RuleSyntaxError
-from .errors import SymbolResolutionError
-
-from .types import DataType
-
-# 可移植、签名的规则档案子系统（测试环境 → 隔离生产环境）
-from . import archive
+from .archive import ImportDecision, ImportRegistry, ImportReport, RuleArchive, SignatureInfo
+from .errors import (
+    ArchiveError,
+    ArchiveFormatError,
+    ArchiveIntegrityError,
+    DuplicateRuleError,
+    RevokedKeyError,
+    SchemaExportError,
+    UnknownKeyError,
+    UnsupportedCapabilityError,
+    UnverifiedArchiveError,
+)
+from .keys import LocalKeyring, SigningKey, TrustedKey
 
 __all__ = (
-    'AttributeResolutionError',
-    'Context',
-    'DataType',
-    'EngineError',
-    'EvaluationError',
-    'Rule',
-    'RuleSyntaxError',
-    'SymbolResolutionError',
-    'resolve_attribute',
-    'resolve_item',
-    'type_resolver_from_dataclass',
-    'type_resolver_from_dict',
-    'type_resolver_from_sqlalchemy',
+    'ArchiveError',
+    'ArchiveFormatError',
+    'ArchiveIntegrityError',
+    'DuplicateRuleError',
+    'ImportDecision',
+    'ImportRegistry',
+    'ImportReport',
+    'LocalKeyring',
+    'RevokedKeyError',
+    'RuleArchive',
+    'SchemaExportError',
+    'SignatureInfo',
+    'SigningKey',
+    'TrustedKey',
+    'UnknownKeyError',
+    'UnsupportedCapabilityError',
+    'UnverifiedArchiveError',
 )
